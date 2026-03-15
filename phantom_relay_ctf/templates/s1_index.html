@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandStorm Telecom - GlobalProtect Portal</title>
+    <link rel="stylesheet" href="/static/css/panos.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                    <rect x="2" y="2" width="36" height="36" rx="4" fill="#16a085" stroke="#1abc9c" stroke-width="1"/>
+                    <path d="M10 12h20v4H10zM10 19h20v2H10zM10 24h20v2H10zM10 29h14v2H10z" fill="#fff" opacity="0.9"/>
+                    <circle cx="30" cy="30" r="5" fill="#e74c3c"/>
+                    <path d="M28 30h4M30 28v4" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+                <span class="header-title">SandStorm Telecom</span>
+            </div>
+            <div class="stage-nav">
+                <span class="stage-badge active">Stage 1: Perimeter Breach</span>
+                {% if stage2_unlocked %}
+                <a href="/stage2" class="stage-badge unlocked">Stage 2: Infected Host</a>
+                {% else %}
+                <span class="stage-badge locked">Stage 2: Locked</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>GlobalProtect Portal</h2>
+                <p class="login-desc">Sign in to access VPN services</p>
+            </div>
+            <form action="/global-protect/login" method="POST" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="user" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="passwd" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="portal">Portal</label>
+                    <select id="portal" name="portal">
+                        <option value="Gateway">SandStorm-Gateway</option>
+                        <option value="Gateway-DR">SandStorm-Gateway-DR</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-login">Sign In</button>
+            </form>
+            <div class="login-footer">
+                <a href="/global-protect/portal/support">Support</a>
+                <a href="/global-protect/portal/download">Download Client</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>PAN-OS 10.2.7-h3 &copy; 2024 SandStorm Telecom. All rights reserved.</p>
+        <p class="footer-info">GlobalProtect Portal | Firewall: PA-5260 | HA: Active/Passive</p>
+    </div>
+
+    <script src="/static/js/portal.js"></script>
+</body>
+</html>

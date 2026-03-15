@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operation Phantom Relay - Complete</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #000;
+            color: #00ff41;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .victory-container {
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+        }
+        .trophy { font-size: 80px; margin-bottom: 24px; }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            color: #008f21;
+            font-size: 14px;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+        .stages {
+            text-align: left;
+            margin: 0 auto 32px;
+            max-width: 500px;
+        }
+        .stage-complete {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1px solid #1a3a1a;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .check { color: #00ff41; font-size: 18px; }
+        .stage-name { color: #00cc33; }
+        .final-flag {
+            background: #0a0a0a;
+            border: 2px solid #00ff41;
+            padding: 24px;
+            margin-top: 24px;
+        }
+        .final-flag h2 {
+            font-size: 14px;
+            color: #008f21;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .flag-value {
+            font-size: 16px;
+            color: #00ff41;
+            word-break: break-all;
+            line-height: 1.6;
+        }
+        .congrats {
+            color: #006620;
+            font-size: 12px;
+            margin-top: 32px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="victory-container">
+        <div class="trophy">&#127942;</div>
+        <h1>MISSION COMPLETE</h1>
+        <p class="subtitle">OPERATION PHANTOM RELAY</p>
+
+        <div class="stages">
+            <div class="stage-complete">
+                <span class="check">&#10003;</span>
+                <span class="stage-name">Stage 1: Perimeter Breach</span>
+                <span style="margin-left: auto; color: #006620;">PAN-OS Exploit</span>
+            </div>
+            <div class="stage-complete">
+                <span class="check">&#10003;</span>
+                <span class="stage-name">Stage 2: Infected Host</span>
+                <span style="margin-left: auto; color: #006620;">Memory Forensics</span>
+            </div>
+            <div class="stage-complete">
+                <span class="check">&#10003;</span>
+                <span class="stage-name">Stage 3: Exfiltration</span>
+                <span style="margin-left: auto; color: #006620;">DNS Forensics</span>
+            </div>
+        </div>
+
+        <div class="final-flag">
+            <h2>> COMBINED INCIDENT TOKEN</h2>
+            <div class="flag-value">
+                t4um4t4wh4k4t4ng1h4ng4<br>
+                k04u4u0t4m4t34tur1puk4k4p1k1<br>
+                m4ung4h0r0nukup0k41wh3nu4k1t4n4t4hu
+            </div>
+        </div>
+
+        <p class="congrats">[ ALL THREE INCIDENT TOKEN FRAGMENTS RECOVERED SUCCESSFULLY ]</p>
+    </div>
+</body>
+</html>

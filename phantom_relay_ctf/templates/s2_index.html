@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandStorm Telecom - Incident Response Portal</title>
+    <link rel="stylesheet" href="/static/css/ir.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg viewBox="0 0 40 40" width="40" height="40">
+                    <rect x="2" y="2" width="36" height="36" rx="4" fill="#1a1a1a" stroke="#e67e22" stroke-width="2"/>
+                    <path d="M12 14l8-4 8 4v12l-8 4-8-4z" fill="none" stroke="#e67e22" stroke-width="1.5"/>
+                    <circle cx="20" cy="20" r="3" fill="#e74c3c"/>
+                    <path d="M20 14v3M20 23v3M14 20h3M23 20h3" stroke="#e67e22" stroke-width="1"/>
+                </svg>
+                <div>
+                    <span class="header-title">SandStorm Telecom</span>
+                    <span class="header-subtitle">Incident Response Portal</span>
+                </div>
+            </div>
+            <div class="case-badge">
+                <span class="badge-label">STAGE 2</span>
+                <span class="badge-value">IR-2024-0337</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="alert-banner">
+            <span class="alert-icon">&#9888;</span>
+            <div>
+                <strong>CLASSIFICATION: CONFIDENTIAL</strong>
+                <p>Evidence materials for authorized incident response personnel only. Case IR-2024-0337 — Compromised workstation in Financial Services department.</p>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Case Summary</h2>
+            <div class="case-info">
+                <div class="info-row">
+                    <span class="info-label">Case ID</span>
+                    <span class="info-value">IR-2024-0337</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date Opened</span>
+                    <span class="info-value">2024-03-15 04:22:00 UTC</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Affected Host</span>
+                    <span class="info-value">WKSTN-FIN-042 (10.50.3.42)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Classification</span>
+                    <span class="info-value status-critical">APT Compromise - Active C2</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Threat Actor</span>
+                    <span class="info-value">APT-MIRAGE (State-sponsored)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Initial Vector</span>
+                    <span class="info-value">Exploited network appliance (see Case NET-2024-0337-EXFIL)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Evidence Artifacts</h2>
+            <p class="section-desc">Download the following forensic artifacts for analysis. Handle with chain-of-custody procedures.</p>
+            <div class="artifact-list">
+                {% for artifact in artifacts %}
+                <div class="artifact-item">
+                    <div class="artifact-icon">
+                        {% if artifact.name.endswith('.bin') %}
+                        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="2" fill="#2c3e50" stroke="#e67e22" stroke-width="1.5"/><text x="12" y="15" text-anchor="middle" fill="#e67e22" font-size="7" font-family="monospace">BIN</text></svg>
+                        {% else %}
+                        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="2" fill="#2c3e50" stroke="#27ae60" stroke-width="1.5"/><text x="12" y="15" text-anchor="middle" fill="#27ae60" font-size="7" font-family="monospace">IMG</text></svg>
+                        {% endif %}
+                    </div>
+                    <div class="artifact-details">
+                        <strong>{{ artifact.name }}</strong>
+                        <div class="artifact-meta">
+                            <span>Size: {{ artifact.size }}</span>
+                            <span class="hash">SHA256: {{ artifact.sha256 }}</span>
+                        </div>
+                    </div>
+                    <a href="/stage2/download/{{ artifact.name }}" class="btn-download">Download</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Analysis Notes</h2>
+            <div class="notes">
+                <p><strong>Analyst:</strong> K. Rahman, Senior IR Analyst</p>
+                <p><strong>Preliminary findings:</strong></p>
+                <ul>
+                    <li>Suspicious svchost.exe process identified with anomalous parent process</li>
+                    <li>Process injection indicators (MITRE T1055) detected in memory regions</li>
+                    <li>Volume Shadow Copy snapshot preserved for registry analysis (CVE-2021-36934 indicators)</li>
+                    <li>Incident token fragment embedded in malware C2 configuration</li>
+                    <li>Binary artifact contains custom header — parse using struct module</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Stage 2 Flag Submission -->
+        <div class="section-card" style="border-color: #e67e22;">
+            <h2>Stage 2 - Submit Incident Token Fragment</h2>
+            <p class="section-desc">Extract the incident token fragment from the C2 configuration embedded in the memory dump to advance to Stage 3.</p>
+            {% if error %}
+            <div style="background: rgba(231,76,60,0.15); border: 1px solid #e74c3c; color: #e74c3c; padding: 10px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 13px;">Incorrect flag. Try again.</div>
+            {% endif %}
+            <form action="/verify/stage2" method="POST" style="display: flex; gap: 12px; align-items: end;">
+                <div style="flex: 1;">
+                    <label style="display: block; color: #707080; font-size: 12px; margin-bottom: 6px;">Incident Token Fragment 2</label>
+                    <input type="text" name="flag" placeholder="Enter the extracted token..." autocomplete="off" style="width: 100%; padding: 10px 14px; background: #0a0a12; border: 1px solid #1e1e30; border-radius: 4px; color: #d0d0d0; font-size: 14px; font-family: 'Consolas', monospace;">
+                </div>
+                <button type="submit" class="btn-download" style="padding: 10px 24px; cursor: pointer;">Submit &amp; Advance</button>
+            </form>
+        </div>
+
+        {% if stage3_unlocked %}
+        <div class="section-card" style="border-color: #2ecc71;">
+            <h2 style="color: #2ecc71;">Stage 2 Complete!</h2>
+            <p style="color: #a0a0b0;"><a href="/stage3" style="color: #2ecc71;">Proceed to Stage 3: Exfiltration &rarr;</a></p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 SandStorm Telecom — Security Operations Center</p>
+    </div>
+</body>
+</html>

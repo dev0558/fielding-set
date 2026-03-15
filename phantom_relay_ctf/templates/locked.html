@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Locked - Operation Phantom Relay</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .locked-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+        }
+        .lock-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.6;
+        }
+        h1 {
+            color: #e74c3c;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        p {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .back-link {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid #555;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="locked-container">
+        <div class="lock-icon">&#128274;</div>
+        <h1>Stage {{ stage }} - Locked</h1>
+        <p>You must complete {{ need }} before you can access this stage. Go back and submit the correct incident token fragment to unlock this stage.</p>
+        <a href="/" class="back-link">&larr; Back to Stage 1</a>
+    </div>
+</body>
+</html>
