@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandStorm Telecom - Security Advisory SA-2024-003</title>
+    <link rel="stylesheet" href="/static/css/panos.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                    <rect x="2" y="2" width="36" height="36" rx="4" fill="#16a085" stroke="#1abc9c" stroke-width="1"/>
+                    <path d="M10 12h20v4H10zM10 19h20v2H10zM10 24h20v2H10zM10 29h14v2H10z" fill="#fff" opacity="0.9"/>
+                    <circle cx="30" cy="30" r="5" fill="#e74c3c"/>
+                    <path d="M28 30h4M30 28v4" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+                <span class="header-title">SandStorm Telecom</span>
+            </div>
+            <div class="nav-links">
+                <a href="/global-protect/portal" class="nav-link">Portal</a>
+                <a href="/global-protect/portal/download" class="nav-link">Downloads</a>
+                <a href="/global-protect/portal/support" class="nav-link">Support</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="portal-container">
+        <div class="portal-card" style="border-color: #e74c3c;">
+            <h2 style="color: #e74c3c;">Security Advisory SA-2024-003</h2>
+            <div class="status-panel">
+                <div class="status-row">
+                    <span class="status-label">Advisory ID</span>
+                    <span class="status-value">SA-2024-003</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">CVE</span>
+                    <span class="status-value" style="color: #e74c3c;">CVE-2024-3400</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Severity</span>
+                    <span class="status-value" style="color: #e74c3c; font-weight: 600;">CRITICAL (CVSS 10.0)</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Published</span>
+                    <span class="status-value">2024-04-12</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Affected Product</span>
+                    <span class="status-value">PAN-OS GlobalProtect Gateway</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Affected Versions</span>
+                    <span class="status-value">PAN-OS 10.2.x &lt; 10.2.9-h1, 11.0.x &lt; 11.0.4-h1, 11.1.x &lt; 11.1.2-h3</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Our Version</span>
+                    <span class="status-value" style="color: #e74c3c;">10.2.7-h3 (VULNERABLE)</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Patch Status</span>
+                    <span class="status-value" style="color: #f39c12;">Scheduled — 2024-03-22 maintenance window</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="portal-card">
+            <h2>Vulnerability Details</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Overview</h3>
+                    <p>A critical command injection vulnerability exists in the GlobalProtect gateway's <strong>HIP (Host Information Profile) check</strong> mechanism. The vulnerability allows an unauthenticated attacker to execute arbitrary OS commands on the firewall with root privileges.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Affected Component</h3>
+                    <p>The vulnerability is in the <code style="background: #0f0f1e; padding: 2px 6px; border-radius: 3px; color: #16a085;">/ssl-vpn/hipreport.esp</code> endpoint, which processes HIP reports submitted by GlobalProtect clients during the connection setup phase.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Attack Vector</h3>
+                    <p>The <code style="background: #0f0f1e; padding: 2px 6px; border-radius: 3px; color: #16a085;">SESSID</code> cookie value is passed to a shell command without proper sanitization. An attacker can craft a malicious session identifier containing OS commands to achieve Remote Code Execution (RCE). The endpoint accepts <strong>POST</strong> requests.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Exploitation</h3>
+                    <p>Proof-of-concept exploits are publicly available. The attack requires no authentication. Threat actors (including UTA0218/APT-MIRAGE) have been observed exploiting this vulnerability in the wild to deploy backdoors and exfiltrate data.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portal-card">
+            <h2>Interim Mitigation</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Threat Prevention Signature</h3>
+                    <p>Threat Prevention signature #95187 has been deployed on the PA-5260 to detect exploitation attempts. However, bypass techniques have been observed — treat this as a partial mitigation only.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Monitoring</h3>
+                    <p>SOC is monitoring for suspicious activity on the <code style="background: #0f0f1e; padding: 2px 6px; border-radius: 3px; color: #16a085;">/ssl-vpn/</code> path. Any unusual command execution or file access under <code style="background: #0f0f1e; padding: 2px 6px; border-radius: 3px; color: #16a085;">/opt/panlogs/</code> should be reported immediately to the IR team.</p>
+                </div>
+                <!-- TODO: K.Rahman — disable the HIP check endpoint before maintenance window. Ticket: NOC-4491 -->
+            </div>
+        </div>
+
+        <div class="portal-card">
+            <h2>References</h2>
+            <div class="status-panel">
+                <div class="status-row">
+                    <span class="status-label">Palo Alto Advisory</span>
+                    <span class="status-value">PAN-SA-2024-0015</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">NIST NVD</span>
+                    <span class="status-value">CVE-2024-3400</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">CISA KEV</span>
+                    <span class="status-value">Added 2024-04-12</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Internal Ticket</span>
+                    <span class="status-value">NOC-4491</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>PAN-OS 10.2.7-h3 &copy; 2024 SandStorm Telecom. All rights reserved.</p>
+    </div>
+</body>
+</html>
