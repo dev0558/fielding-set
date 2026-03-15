@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FortiManager - Event Logs</title>
+    <link rel="stylesheet" href="/static/css/fortimgr.css">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-brand">
+            <svg class="topbar-logo" viewBox="0 0 28 28" width="28" height="28">
+                <rect x="1" y="1" width="26" height="26" rx="3" fill="#ee3124"/>
+                <path d="M7 8h14v2H7zM7 13h14v2H7zM7 18h10v2H7z" fill="#fff" opacity="0.9"/>
+            </svg>
+            <span class="topbar-title">FortiManager</span>
+            <span class="topbar-subtitle">SandStorm Telecom</span>
+        </div>
+        <span class="topbar-user">admin@FMG-SANDSTORM-01</span>
+    </div>
+
+    <div class="app-layout">
+        <nav class="sidebar">
+            <div class="sidebar-section">Management</div>
+            <a href="/dashboard" class="sidebar-link">
+                <span class="sidebar-icon">&#9632;</span> Dashboard
+            </a>
+            <a href="/devices" class="sidebar-link">
+                <span class="sidebar-icon">&#9644;</span> Device Manager
+            </a>
+            <a href="/logs" class="sidebar-link active">
+                <span class="sidebar-icon">&#9776;</span> Event Logs
+            </a>
+            <div class="sidebar-section">System</div>
+            <a href="/support" class="sidebar-link">
+                <span class="sidebar-icon">&#9881;</span> Firmware &amp; Support
+            </a>
+        </nav>
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Event Logs</h1>
+                    <p class="page-subtitle">FGFM connection events and system log</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">FGFM Connection Log</span>
+                    <span class="panel-badge info">Last 24h</span>
+                </div>
+                <div class="panel-body" style="padding:0;">
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 08:22:03</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-GW-CORE-01 (FGT60F0000000001) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 08:21:57</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-DMZ-FW-02 (FGT40F0000000002) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 08:20:41</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-BRANCH-03 (FGT80F0000000003) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 07:44:19</span>
+                        <span class="log-level warn">WARN</span>
+                        <span class="log-highlight">Unknown device FGT-GHOST attempted registration from 45.32.41.202 — DENIED (fgfm-deny-unknown: disabled)</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 07:33:11</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-WAN-EDGE-04 (FGT10F0000000004) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 06:58:42</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-MGMT-FW-07 (FGT30E0000000007) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 06:12:03</span>
+                        <span class="log-level warn">WARN</span>
+                        FGT-BRANCH-05: firmware version mismatch — running v7.2.3, policy baseline requires v7.2.6+
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 05:30:00</span>
+                        <span class="log-level info">INFO</span>
+                        Scheduled config backup completed for all managed devices
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 04:15:22</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-BRANCH-05 (FGT60E0000000005) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 04:14:58</span>
+                        <span class="log-level notice">OK</span>
+                        FGFM tunnel established: FGT-BRANCH-06 (FGT40E0000000006) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 02:00:01</span>
+                        <span class="log-level info">INFO</span>
+                        FortiGuard AV/IPS definitions push initiated to all managed devices
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-13 23:45:18</span>
+                        <span class="log-level warn">WARN</span>
+                        Device certificate expiry warning: FGT-WAN-EDGE-04 certificate expires 2024-10-28
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-13 22:10:05</span>
+                        <span class="log-level info">INFO</span>
+                        Admin login: user=admin src=10.50.2.15 action=login status=success
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-13 18:30:22</span>
+                        <span class="log-level error">ERROR</span>
+                        FGT-BRANCH-06: EOL firmware detected (v7.0.14) — security policy compliance FAIL
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="app-footer">
+        FortiManager v7.4.3 build1234 &copy; Fortinet Inc. All rights reserved.
+    </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FortiManager - Device Manager</title>
+    <link rel="stylesheet" href="/static/css/fortimgr.css">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-brand">
+            <svg class="topbar-logo" viewBox="0 0 28 28" width="28" height="28">
+                <rect x="1" y="1" width="26" height="26" rx="3" fill="#ee3124"/>
+                <path d="M7 8h14v2H7zM7 13h14v2H7zM7 18h10v2H7z" fill="#fff" opacity="0.9"/>
+            </svg>
+            <span class="topbar-title">FortiManager</span>
+            <span class="topbar-subtitle">SandStorm Telecom</span>
+        </div>
+        <span class="topbar-user">admin@FMG-SANDSTORM-01</span>
+    </div>
+
+    <div class="app-layout">
+        <nav class="sidebar">
+            <div class="sidebar-section">Management</div>
+            <a href="/dashboard" class="sidebar-link">
+                <span class="sidebar-icon">&#9632;</span> Dashboard
+            </a>
+            <a href="/devices" class="sidebar-link active">
+                <span class="sidebar-icon">&#9644;</span> Device Manager
+            </a>
+            <a href="/logs" class="sidebar-link">
+                <span class="sidebar-icon">&#9776;</span> Event Logs
+            </a>
+            <div class="sidebar-section">System</div>
+            <a href="/support" class="sidebar-link">
+                <span class="sidebar-icon">&#9881;</span> Firmware &amp; Support
+            </a>
+        </nav>
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Device Manager</h1>
+                    <p class="page-subtitle">7 managed FortiGate devices</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Managed Devices</span>
+                    <span class="panel-badge success">7 Online</span>
+                </div>
+                <div class="panel-body" style="padding:0;overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Serial Number</th>
+                                <th>Hostname</th>
+                                <th>Model</th>
+                                <th>Firmware</th>
+                                <th>Status</th>
+                                <th>Last Seen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mono">FGT60F0000000001</td>
+                                <td>FGT-GW-CORE-01</td>
+                                <td>FortiGate-600E</td>
+                                <td class="mono">v7.2.8</td>
+                                <td><span class="status status-up">Online</span></td>
+                                <td class="mono">2024-10-14 08:22:03</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">FGT40F0000000002</td>
+                                <td>FGT-DMZ-FW-02</td>
+                                <td>FortiGate-400F</td>
+                                <td class="mono">v7.4.1</td>
+                                <td><span class="status status-up">Online</span></td>
+                                <td class="mono">2024-10-14 08:21:57</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">FGT80F0000000003</td>
+                                <td>FGT-BRANCH-03</td>
+                                <td>FortiGate-80F</td>
+                                <td class="mono">v7.2.5</td>
+                                <td><span class="status status-up">Online</span></td>
+                                <td class="mono">2024-10-14 08:20:41</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">FGT10F0000000004</td>
+                                <td>FGT-WAN-EDGE-04</td>
+                                <td>FortiGate-100F</td>
+                                <td class="mono">v7.4.2</td>
+                                <td><span class="status status-up">Online</span></td>
+                                <td class="mono">2024-10-14 08:22:11</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">FGT60E0000000005</td>
+                                <td>FGT-BRANCH-05</td>
+                                <td>FortiGate-60E</td>
+                                <td class="mono">v7.2.3</td>
+                                <td><span class="status status-warning">Degraded</span></td>
+                                <td class="mono">2024-10-14 08:19:33</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">FGT40E0000000006</td>
+                                <td>FGT-BRANCH-06</td>
+                                <td>FortiGate-40F</td>
+                                <td class="mono">v7.0.14</td>
+                                <td><span class="status status-warning">Degraded</span></td>
+                                <td class="mono">2024-10-14 08:18:02</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">FGT30E0000000007</td>
+                                <td>FGT-MGMT-FW-07</td>
+                                <td>FortiGate-300E</td>
+                                <td class="mono">v7.4.3</td>
+                                <td><span class="status status-up">Online</span></td>
+                                <td class="mono">2024-10-14 08:22:08</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="app-footer">
+        FortiManager v7.4.3 build1234 &copy; Fortinet Inc. All rights reserved.
+    </div>
+</body>
+</html>

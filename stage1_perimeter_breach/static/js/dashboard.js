@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.querySelector('.login-form');
+    var form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', function() {
             var btn = form.querySelector('.btn-login');
