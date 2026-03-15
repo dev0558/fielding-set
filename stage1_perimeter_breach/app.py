@@ -69,6 +69,21 @@ def support():
 # ============================================================
 # Recon / API Endpoints
 # ============================================================
+@app.route("/api/v1/")
+def api_index():
+    return jsonify({
+        "api_version": "v1",
+        "endpoints": [
+            {"path": "/api/v1/system/status", "method": "GET", "description": "System status and configuration"},
+            {"path": "/api/v1/health", "method": "GET", "description": "Health check"},
+            {"path": "/api/v1/config/backup.json", "method": "GET", "description": "Configuration backup metadata"},
+            {"path": "/api/v1/fortiguard/update-check", "method": "GET", "description": "FortiGuard update status"},
+            {"path": "/api/v1/fgfm/daemon", "method": "GET", "description": "FGFM daemon status"},
+            {"path": "/jsonrpc", "method": "POST", "description": "JSON-RPC management interface"}
+        ]
+    })
+
+
 @app.route("/api/v1/system/status")
 def system_status():
     return jsonify({
@@ -80,7 +95,8 @@ def system_status():
         "fgfm_port": 541,
         "fgfm_status": "listening",
         "jsonrpc_api": "enabled",
-        "registered_devices": 7
+        "registered_devices": 7,
+        "data_dir": "/var/fmg/"
     })
 
 

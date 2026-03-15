@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="/static/css/fortimgr.css">
 </head>
 <body>
+    <!-- FortiManager Dashboard v7.4.3 -->
+    <!-- Data loaded from /api/v1/system/status -->
+    <!-- Health: /api/v1/health -->
+    <!-- Management API docs: /api/v1/ -->
     <div class="topbar">
         <div class="topbar-brand">
             <svg class="topbar-logo" viewBox="0 0 28 28" width="28" height="28">
@@ -48,7 +52,7 @@
             <div class="card-grid">
                 <div class="stat-card">
                     <div class="stat-card-label">Managed Devices</div>
-                    <div class="stat-card-value info">7</div>
+                    <div class="stat-card-value info" id="device-count">7</div>
                     <div class="stat-card-sub">All FortiGate units</div>
                 </div>
                 <div class="stat-card">
@@ -62,9 +66,9 @@
                     <div class="stat-card-sub">Tunnel sessions active</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card-label">Last Sync</div>
-                    <div class="stat-card-value" style="font-size:16px;color:#d0d0d8;">2024-10-14 08:22 UTC</div>
-                    <div class="stat-card-sub">Config push completed</div>
+                    <div class="stat-card-label">System Health</div>
+                    <div class="stat-card-value success" id="health-status" style="font-size:16px;">Operational</div>
+                    <div class="stat-card-sub">All services running</div>
                 </div>
             </div>
 
@@ -77,7 +81,7 @@
                     <div class="info-list">
                         <div class="info-row">
                             <span class="info-label">Hostname</span>
-                            <span class="info-value">FMG-SANDSTORM-01</span>
+                            <span class="info-value" id="fmg-hostname">FMG-SANDSTORM-01</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">Serial</span>
@@ -93,7 +97,7 @@
                         </div>
                         <div class="info-row">
                             <span class="info-label">Uptime</span>
-                            <span class="info-value">47 days, 12:33:17</span>
+                            <span class="info-value" id="uptime-display">47 days, 12:33:17</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">HA Mode</span>
@@ -144,5 +148,24 @@
     <div class="app-footer">
         FortiManager v7.4.3 build1234 &copy; Fortinet Inc. All rights reserved.
     </div>
+
+    <script>
+    // Load dashboard data from FortiManager API
+    fetch('/api/v1/system/status')
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById('device-count').textContent = data.registered_devices || '7';
+            document.getElementById('fmg-hostname').textContent = data.hostname || 'FMG-SANDSTORM-01';
+            document.getElementById('uptime-display').textContent = data.uptime || '--';
+        })
+        .catch(() => {});
+
+    fetch('/api/v1/health')
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById('health-status').textContent = data.status || 'unknown';
+        })
+        .catch(() => {});
+    </script>
 </body>
 </html>
