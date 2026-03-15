@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandStorm Telecom - Network Forensics Evidence Portal</title>
+    <link rel="stylesheet" href="/static/css/netops.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg viewBox="0 0 40 40" width="40" height="40">
+                    <rect x="2" y="2" width="36" height="36" rx="4" fill="#0a0a0a" stroke="#00ff41" stroke-width="1.5"/>
+                    <circle cx="20" cy="14" r="3" fill="none" stroke="#00ff41" stroke-width="1.2"/>
+                    <circle cx="12" cy="26" r="3" fill="none" stroke="#00ff41" stroke-width="1.2"/>
+                    <circle cx="28" cy="26" r="3" fill="none" stroke="#00ff41" stroke-width="1.2"/>
+                    <line x1="20" y1="17" x2="12" y2="23" stroke="#00ff41" stroke-width="1"/>
+                    <line x1="20" y1="17" x2="28" y2="23" stroke="#00ff41" stroke-width="1"/>
+                    <line x1="12" y1="26" x2="28" y2="26" stroke="#00ff41" stroke-width="0.8" stroke-dasharray="2,2"/>
+                </svg>
+                <div>
+                    <span class="header-title">SandStorm Telecom</span>
+                    <span class="header-subtitle">Network Forensics Evidence Portal</span>
+                </div>
+            </div>
+            <div class="case-badge">
+                <span class="badge-label">CASE</span>
+                <span class="badge-value">NET-2024-0337-EXFIL</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="alert-banner">
+            <span class="alert-icon">[!]</span>
+            <div>
+                <strong>ACTIVE THREAT — DNS EXFILTRATION DETECTED</strong>
+                <p>Network capture contains evidence of DNS-based data exfiltration from compromised DNS resolver. Handle per IR-SOP-7.</p>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>> Case Overview</h2>
+            <div class="terminal-block">
+                <div class="term-row"><span class="term-label">Case ID</span><span class="term-value">NET-2024-0337-EXFIL</span></div>
+                <div class="term-row"><span class="term-label">Related Case</span><span class="term-value">IR-2024-0337 (Host Forensics)</span></div>
+                <div class="term-row"><span class="term-label">Capture Start</span><span class="term-value">2024-03-14 22:00:00 UTC</span></div>
+                <div class="term-row"><span class="term-label">Capture End</span><span class="term-value">2024-03-14 22:47:12 UTC</span></div>
+                <div class="term-row"><span class="term-label">Duration</span><span class="term-value">47 min 12 sec</span></div>
+                <div class="term-row"><span class="term-label">Capture Interface</span><span class="term-value">span0 (mirror of core-sw01 uplink)</span></div>
+                <div class="term-row"><span class="term-label">Threat Actor</span><span class="term-value amber">APT-MIRAGE</span></div>
+                <div class="term-row"><span class="term-label">Attack Vector</span><span class="term-value red">DNS Server Exploit + DNS Exfiltration</span></div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>> Evidence Artifact</h2>
+            <div class="artifact-box">
+                <div class="artifact-header">
+                    <span class="file-icon">&gt;_</span>
+                    <strong>{{ artifact.name }}</strong>
+                </div>
+                <div class="artifact-meta">
+                    <div class="term-row"><span class="term-label">File Size</span><span class="term-value">{{ artifact.size }}</span></div>
+                    <div class="term-row"><span class="term-label">SHA256</span><span class="term-value hash">{{ artifact.sha256 }}</span></div>
+                    <div class="term-row"><span class="term-label">Format</span><span class="term-value">pcapng (Wireshark compatible)</span></div>
+                </div>
+                <a href="/download/{{ artifact.name }}" class="btn-download">[DOWNLOAD CAPTURE]</a>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>> Analyst Notes</h2>
+            <div class="notes-terminal">
+                <p class="note-line"><span class="prompt">$</span> Capture taken from SPAN port mirroring core switch uplink</p>
+                <p class="note-line"><span class="prompt">$</span> Anomalous DNS TXT queries detected to suspicious domain</p>
+                <p class="note-line"><span class="prompt">$</span> Initial compromise appears to be DNS server exploit (oversized response)</p>
+                <p class="note-line"><span class="prompt">$</span> Exfiltrated data uses hex-encoded subdomain labels with sequence numbers</p>
+                <p class="note-line"><span class="prompt">$</span> Reassembled payload appears to be gzip-compressed configuration</p>
+                <p class="note-line"><span class="prompt">$</span> Incident token fragment embedded in exfil data — recover for IR report</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>[ SandStorm Telecom NOC ] — Secure Evidence Portal — Authorized Access Only</p>
+    </div>
+</body>
+</html>

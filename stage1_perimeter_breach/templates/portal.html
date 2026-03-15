@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandStorm Telecom - VPN Portal</title>
+    <link rel="stylesheet" href="/static/css/panos.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                    <rect x="2" y="2" width="36" height="36" rx="4" fill="#16a085" stroke="#1abc9c" stroke-width="1"/>
+                    <path d="M10 12h20v4H10zM10 19h20v2H10zM10 24h20v2H10zM10 29h14v2H10z" fill="#fff" opacity="0.9"/>
+                    <circle cx="30" cy="30" r="5" fill="#e74c3c"/>
+                    <path d="M28 30h4M30 28v4" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+                <span class="header-title">SandStorm Telecom</span>
+            </div>
+            <div class="nav-links">
+                <a href="/global-protect/portal" class="nav-link active">Portal</a>
+                <a href="/global-protect/portal/download" class="nav-link">Downloads</a>
+                <a href="/global-protect/portal/support" class="nav-link">Support</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="portal-container">
+        <div class="portal-card">
+            <h2>VPN Connection Status</h2>
+            <div class="status-panel">
+                <div class="status-row">
+                    <span class="status-label">Connection</span>
+                    <span class="status-value connected">Connected</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Gateway</span>
+                    <span class="status-value">gw1.sandstorm-telecom.net</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Assigned IP</span>
+                    <span class="status-value">10.50.99.147</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Tunnel Type</span>
+                    <span class="status-value">IPSec</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Connected Since</span>
+                    <span class="status-value">2024-03-14 22:47:31 UTC</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Data Sent</span>
+                    <span class="status-value">142.7 MB</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">Data Received</span>
+                    <span class="status-value">1.23 GB</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="portal-card">
+            <h2>Network Resources</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <span class="resource-icon">&#128193;</span>
+                    <div>
+                        <strong>File Server</strong>
+                        <p>\\files.corp.sandstorm-telecom.net</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">&#128218;</span>
+                    <div>
+                        <strong>Internal Wiki</strong>
+                        <p>https://wiki.corp.sandstorm-telecom.net</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">&#128231;</span>
+                    <div>
+                        <strong>Email (OWA)</strong>
+                        <p>https://mail.sandstorm-telecom.net/owa</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">&#128736;</span>
+                    <div>
+                        <strong>Ticketing System</strong>
+                        <p>https://jira.corp.sandstorm-telecom.net</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>PAN-OS 10.2.7-h3 &copy; 2024 SandStorm Telecom. All rights reserved.</p>
+    </div>
+</body>
+</html>
