@@ -160,6 +160,17 @@ body {
     background: #1abc9c;
 }
 
+.error-msg {
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .login-footer {
     display: flex;
     justify-content: space-between;

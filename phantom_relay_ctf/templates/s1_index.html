@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/css/panos.css">
 </head>
 <body>
+    <!-- Portal v3.2 | migrated config to /global-protect/portal/config/ - need to lock down before prod -->
     <div class="header-bar">
         <div class="header-content">
             <div class="logo-section">
@@ -35,6 +36,11 @@
                 <h2>GlobalProtect Portal</h2>
                 <p class="login-desc">Sign in to access VPN services</p>
             </div>
+            {% if error == "invalid" %}
+            <div class="error-msg">Authentication failed. Invalid username or password.</div>
+            {% elif error == "auth" %}
+            <div class="error-msg">Session expired. Please sign in again.</div>
+            {% endif %}
             <form action="/global-protect/login" method="POST" class="login-form">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -60,9 +66,8 @@
         </div>
     </div>
 
-    <!-- NOC-4491: URGENT — CVE-2024-3400 patching pending. HIP report endpoint (/ssl-vpn/hipreport.esp) is still exposed. Disable before maintenance window. —K.Rahman -->
     <div class="footer">
-        <p>PAN-OS 10.2.7-h3 &copy; 2024 SandStorm Telecom. All rights reserved.</p>
+        <p>&copy; 2024 SandStorm Telecom. All rights reserved.</p>
         <p class="footer-info">GlobalProtect Portal | Firewall: PA-5260 | HA: Active/Passive</p>
     </div>
 
