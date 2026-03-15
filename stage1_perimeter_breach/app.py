@@ -159,6 +159,15 @@ def admin_index():
     )
 
 
+@app.route("/ssl-vpn/")
+def ssl_vpn_index():
+    return Response(
+        "<h1>403 Forbidden</h1><p>SSL VPN access restricted. Use GlobalProtect client.</p>",
+        mimetype="text/html",
+        status=403,
+    )
+
+
 @app.route("/ssl-vpn/portal.esp")
 def portal_esp():
     html = """<!DOCTYPE html>
