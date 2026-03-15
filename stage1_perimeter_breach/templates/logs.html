@@ -69,7 +69,7 @@
                     <div class="log-entry">
                         <span class="log-time">2024-10-14 07:44:19</span>
                         <span class="log-level warn">WARN</span>
-                        <span class="log-highlight">Unknown device FGT-GHOST attempted registration from 45.32.41.202 — DENIED (fgfm-deny-unknown: disabled)</span>
+                        <span class="log-highlight">fgfm-deny-unknown is DISABLED — all devices can register without approval</span>
                     </div>
                     <div class="log-entry">
                         <span class="log-time">2024-10-14 07:33:11</span>
@@ -100,6 +100,26 @@
                         <span class="log-time">2024-10-14 04:14:58</span>
                         <span class="log-level notice">OK</span>
                         FGFM tunnel established: FGT-BRANCH-06 (FGT40E0000000006) — keepalive OK
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 03:15:01</span>
+                        <span class="log-level error">CRITICAL</span>
+                        <span class="log-highlight">Unauthorized file access detected: /var/fmg/data/.incident_response/</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 03:14:25</span>
+                        <span class="log-level warn">WARN</span>
+                        <span class="log-highlight">fgfm-deny-unknown is DISABLED — all devices can register without approval</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 03:14:23</span>
+                        <span class="log-level error">CRITICAL</span>
+                        <span class="log-highlight">JSON-RPC exec request received from unregistered device — no authentication required — command executed as root</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-10-14 03:14:22</span>
+                        <span class="log-level error">CRITICAL</span>
+                        <span class="log-highlight">Unknown device FMG-VMTM23017412 connected from 45.32.41.202 via TCP/541 — device registered without authentication (CVE-2024-47575)</span>
                     </div>
                     <div class="log-entry">
                         <span class="log-time">2024-10-14 02:00:01</span>
